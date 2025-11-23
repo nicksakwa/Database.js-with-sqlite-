@@ -19,6 +19,7 @@ async function runDatabaseApp(){
             INSERT INTO users(name, email) VALUES(?, ?);
             ', [userName, userEmail]);
         console.log('Successfully inserted user: ${userName} with ID: ${insertResult.LastInsertID}');
+        console.log('\n--- 3. Querying Data from table---');
     )
     }
 }
