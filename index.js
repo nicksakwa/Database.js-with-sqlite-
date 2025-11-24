@@ -20,7 +20,14 @@ async function runDatabaseApp(){
             ', [userName, userEmail]);
         console.log('Successfully inserted user: ${userName} with ID: ${insertResult.LastInsertID}');
         console.log('\n--- 3. Querying Data from table---');
-        const selectResult= await db.query('SELECT * FROM users:');
+        const selectResult= await db.query('SELECT id, name, email FROM users;');
+
+        if (selectResult.length === 0){
+            console.log('Found users:');
+            selectResult.forEach(user => {
+                console.log(`ID: ${user.id}, Name: ${user.name}, Email: ${user.email}`);
+            })
+        }
     )
     }
 }
