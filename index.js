@@ -26,8 +26,19 @@ async function runDatabaseApp(){
             console.log('Found users:');
             selectResult.forEach(user => {
                 console.log(`ID: ${user.id}, Name: ${user.name}, Email: ${user.email}`);
-            })
+            });
+        } else {
+            console.log('No users found in the database.');
         }
-    )
+    } catch (error){
+        if (error.code === 'SQLITE_CONSTRAINT_UNIQUE'){
+            console.error(`\nError: Could not insert user. Email must be unique. "${userEmail}" is already in use.`);
+        } else {
+            console.error('An unexpected error occured', error.message);
+        }
+    } finally {
+        console.log('\n--- 4. Closing Database Connection---');
     }
 }
+
+runDatabaseApp();
