@@ -20,6 +20,7 @@ async function runDatabaseApp(){
             ', [userName, userEmail]);
         console.log('Successfully inserted user: ${userName} with ID: ${insertResult.LastInsertID}');
         console.log('\n--- 3. Querying Data from table---');
+        const selectResult= await db.query('SELECT * FROM users:');
     )
     }
 }
